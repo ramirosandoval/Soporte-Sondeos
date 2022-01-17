@@ -1,16 +1,21 @@
 from selenium import webdriver
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
-from sys import argv
 from os import environ
+import argparse
 import pandas as pandas
 
 
 
 #Alertas plataforma info
 url = "";
-alertasUser = environ['alertasUser'];
-alertasPassword = environ['alertasPassword'];
+
+if environ.get('alertasUser'):
+    alertasUser = environ['alertasUser'];
+
+if environ.get('alertasPassword'):
+    alertasPassword = environ['alertasPassword'];
+
 #Alertas plataforma info
 
 #Lote info
@@ -20,28 +25,51 @@ nombreDeColumnaConTelefonos = "";
 #Lote info
 
 #Manejo de argumentos
-if argv[1]:
-    nombreDeLote = argv[1];
 
-if argv[2]:
-    nombreDeColumnaConNombres = argv[2];
+parser = argparse.ArgumentParser()
 
-if argv[3]:
-    nombreDeColumnaConTelefonos = argv[3];
+parser.add_argument('-u', '--username', help='Username de la plataforma');
+parser.add_argument('-p', '--password', help='Password de la plataforma');
+parser.add_argument('-n', '--nombrelote', help='Nombre del lote');
+parser.add_argument('-cn', '--columnanombres', help='Nombre de la columna con los nombres dentro del lote');
+parser.add_argument('-ct', '--columnatelefonos', help='Nombre de la columna con los telefonos dentro del lote');
+parser.add_argument('-l', '--link', help='Link o nombre de la plataforma en la que ingresar los contactos. Por EJ: eswenance (o la URL completa)');
 
-if argv[4]:
-    if argv[4] == 'uywenance':
+args = parser.parse_args();
+
+
+if args.nombrelote:
+    nombreDeLote = args.nombrelote;
+
+if args.columnanombres:
+    nombreDeColumnaConNombres = args.columnanombres;
+
+if args.columnatelefonos:
+    nombreDeColumnaConTelefonos = args.columnatelefonos;
+
+if args.link:
+    if args.link == 'uywenance':
         url = 'http://uywenance.sondeosglobal.com/user/login';
-    elif argv[4] == 'arwenance':
+    elif args.link == 'arwenance':
         url = 'http://arwenance.sondeosglobal.com/user/login';
+    elif args.link == 'argenpesos':
+        url = 'http://argenpesos.sondeosglobal.com/user/login';
+    elif args.link == 'eswenance':
+        url='http://eswenance.sondeosglobal.com/user/login';
+    else:
+        url = args.link;
 #Manejo de argumentos
 
 
 #Pandas
-loteExcel = pandas.read_excel(nombreDeLote);
+loteExcel = pandas.read_excel(f"./bases/{nombreDeLote}");
 columnaNombresDelLote = loteExcel[nombreDeColumnaConNombres];
 columnaNTelefonosDelLote = loteExcel[nombreDeColumnaConTelefonos];
 #Pandas
+
+print(columnaNombresDelLote[0]);
+print(columnaNTelefonosDelLote[0]);
+
 
 #Selenium
 browser = webdriver.Firefox();
@@ -52,10 +80,14 @@ browser.get(url);
 usernameInput = browser.find_element_by_xpath("//input[@name='_username']");
 passwordInput = browser.find_element_by_xpath("//input[@name='_password']");
 
-#Consigue credenciales mediante variables de ambiente
-usernameInput.send_keys(alertasUser);
-passwordInput.send_keys(alertasPassword);
-#Consigue credenciales mediante variables de ambiente
+#Consigue credenciales mediante variables de ambiente o argumentos
+if argv.username and argv.password:
+    usernameInput.send_keys(argv.username);
+    passwordInput.send_keys(argv.password);
+else:
+    usernameInput.send_keys(alertasUser);
+    passwordInput.send_keys(alertasPassword);
+#Consigue credenciales mediante variables de ambiente o argumentos
 
 #Clickea boton de logueo
 browser.find_element_by_xpath("//button[@type='submit']").click();

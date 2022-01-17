@@ -4,9 +4,14 @@ from selenium.common.exceptions import NoSuchElementException
 import pandas as pandas
 from sys import argv
 from os import environ
+import argparse
 
-alertasUser = environ['alertasUser'];
-alertasPassword = environ['alertasPassword'];
+
+if environ.get('alertasUser'):
+    alertasUser = environ['alertasUser'];
+
+if environ.get('alertasPassword'):
+    alertasPassword = environ['alertasPassword'];
 
 #Inicializacion de variables necesarias
 url = "";
@@ -19,30 +24,47 @@ nombreDeColumnaConMensajes = "";
 
 
 #Asignacion de argumentos como valor de variables
-if argv[1]:
-    nombreDeLote = argv[1];
 
-if argv[2]:
-    nombreDeColumnaConNombres = argv[2];
+parser = argparse.ArgumentParser()
 
-if argv[3]:
-    nombreDeColumnaConMensajes = argv[3];
+parser.add_argument('-u', '--username', help='Username de la plataforma');
+parser.add_argument('-p', '--password', help='Password de la plataforma');
+parser.add_argument('-nl', '--nombrelote', help='Nombre del lote');
+parser.add_argument('-ng', '--nombregrupo', help='Nombre del grupo');
+parser.add_argument('-cg', '--codigogrupo', help='Codigo del grupo');
+parser.add_argument('-cn', '--columnanombres', help='Nombre de la columna con los nombres dentro del lote');
+parser.add_argument('-cm', '--columnamensajes', help='Nombre de la columna con los mensajes dentro del lote');
+parser.add_argument('-l', '--link', help='Link o nombre de la plataforma en la que ingresar los contactos. Por EJ: eswenance (o la URL completa)');
 
-if argv[4]:
-    if argv[4] == 'uywenance':
+args = parser.parse_args();
+
+
+if args.nombrelote:
+    nombreDeLote = args.nombrelote;
+
+if args.columnanombres:
+    nombreDeColumnaConNombres = args.columnanombres;
+
+if args.columnamensajes:
+    nombreDeColumnaConMensajes = args.columnamensajes;
+
+if args.link:
+    if args.link == 'uywenance':
         url = 'http://uywenance.sondeosglobal.com/user/login';
-    elif argv[4] == 'arwenance':
+    elif args.link == 'arwenance':
         url = 'http://arwenance.sondeosglobal.com/user/login';
-    elif argv[4] == 'argenpesos':
+    elif args.link == 'argenpesos':
         url = 'http://argenpesos.sondeosglobal.com/user/login';
+    elif args.link == 'eswenance':
+        url='http://eswenance.sondeosglobal.com/user/login';
     else:
-        url = argv[4];
+        url = args.link;
 
-if argv[5]:
-    nombreDeGrupo = argv[5];
+if args.gruponombre:
+    nombreDeGrupo = args.gruponombre;
      
-if argv[6]:
-    codigoDeGrupo = argv[6];
+if args.grupoCodigo:
+    codigoDeGrupo = args.grupoCodigo;
 #Asignacion de argumentos como valor de variables
 
 
@@ -62,8 +84,13 @@ usernameInput = browser.find_element_by_xpath("//input[@name='_username']");
 passwordInput = browser.find_element_by_xpath("//input[@name='_password']");
 
 #Credentials
-usernameInput.send_keys(alertasUser);
-passwordInput.send_keys(alertasPassword);
+
+if argv.username and argv.password:
+    usernameInput.send_keys(argv.username);
+    passwordInput.send_keys(argv.password);
+else:
+    usernameInput.send_keys(alertasUser);
+    passwordInput.send_keys(alertasPassword);
 #Credentials
 
 
