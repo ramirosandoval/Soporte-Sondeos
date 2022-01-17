@@ -14,12 +14,12 @@ if environ.get('alertasPassword'):
     alertasPassword = environ['alertasPassword'];
 
 #Inicializacion de variables necesarias
-url;
-nombreDeLote;
-nombreDeColumnaConNombres;
-nombreDeGrupo;
-codigoDeGrupo;
-nombreDeColumnaConMensajes;
+url = None;
+nombreDeLote = None;
+nombreDeColumnaConNombres = None;
+nombreDeGrupo = None;
+codigoDeGrupo = None;
+nombreDeColumnaConMensajes = None;
 #Inicializacion de variables necesarias
 
 

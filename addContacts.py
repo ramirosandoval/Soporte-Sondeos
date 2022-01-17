@@ -5,10 +5,8 @@ from os import environ
 import argparse
 import pandas as pandas
 
-
-
 #Alertas plataforma info
-url;
+url = None;
 
 if environ.get('alertasUser'):
     alertasUser = environ['alertasUser'];
@@ -19,9 +17,9 @@ if environ.get('alertasPassword'):
 #Alertas plataforma info
 
 #Lote info
-nombreDeLote;
-nombreDeColumnaConNombres;
-nombreDeColumnaConTelefonos;
+nombreDeLote = None;
+nombreDeColumnaConNombres = None;
+nombreDeColumnaConTelefonos = None;
 #Lote info
 
 #Manejo de argumentos
