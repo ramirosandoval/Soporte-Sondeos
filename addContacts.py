@@ -8,7 +8,7 @@ import pandas as pandas
 
 
 #Alertas plataforma info
-url = "";
+url;
 
 if environ.get('alertasUser'):
     alertasUser = environ['alertasUser'];
@@ -19,9 +19,9 @@ if environ.get('alertasPassword'):
 #Alertas plataforma info
 
 #Lote info
-nombreDeLote = "";
-nombreDeColumnaConNombres = "";
-nombreDeColumnaConTelefonos = "";
+nombreDeLote;
+nombreDeColumnaConNombres;
+nombreDeColumnaConTelefonos;
 #Lote info
 
 #Manejo de argumentos

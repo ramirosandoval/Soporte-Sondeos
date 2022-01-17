@@ -14,16 +14,16 @@ if environ.get('alertasPassword'):
     alertasPassword = environ['alertasPassword'];
 
 #Inicializacion de variables necesarias
-url = "";
-nombreDeLote = "";
-nombreDeColumnaConNombres = "";
-nombreDeGrupo = "";
-codigoDeGrupo = 0;
-nombreDeColumnaConMensajes = "";
+url;
+nombreDeLote;
+nombreDeColumnaConNombres;
+nombreDeGrupo;
+codigoDeGrupo;
+nombreDeColumnaConMensajes;
 #Inicializacion de variables necesarias
 
 
-#Asignacion de argumentos como valor de variables
+#Argumentos
 
 parser = argparse.ArgumentParser()
 
@@ -65,8 +65,7 @@ if args.gruponombre:
      
 if args.grupoCodigo:
     codigoDeGrupo = args.grupoCodigo;
-#Asignacion de argumentos como valor de variables
-
+#Argumentos
 
 #Pandas
 loteExcel = pandas.read_excel(f"./bases/{nombreDeLote}");
