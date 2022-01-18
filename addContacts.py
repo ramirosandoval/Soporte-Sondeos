@@ -1,18 +1,11 @@
 from selenium import webdriver
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
-from os import environ
 import argparse
 import pandas as pandas
 
 #Alertas plataforma info
 url = None;
-
-if environ.get('alertasUser'):
-    alertasUser = environ['alertasUser'];
-
-if environ.get('alertasPassword'):
-    alertasPassword = environ['alertasPassword'];
 
 #Alertas plataforma info
 
@@ -78,14 +71,11 @@ browser.get(url);
 usernameInput = browser.find_element_by_xpath("//input[@name='_username']");
 passwordInput = browser.find_element_by_xpath("//input[@name='_password']");
 
-#Consigue credenciales mediante variables de ambiente o argumentos
+#Consigue credenciales de los argumentos
 if args.username and args.password:
     usernameInput.send_keys(args.username);
     passwordInput.send_keys(args.password);
-else:
-    usernameInput.send_keys(alertasUser);
-    passwordInput.send_keys(alertasPassword);
-#Consigue credenciales mediante variables de ambiente o argumentos
+#Consigue credenciales de losargumentos
 
 #Clickea boton de logueo
 browser.find_element_by_xpath("//button[@type='submit']").click();

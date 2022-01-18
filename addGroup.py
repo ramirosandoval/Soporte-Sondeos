@@ -3,15 +3,7 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 import pandas as pandas
 from sys import argv
-from os import environ
 import argparse
-
-
-if environ.get('alertasUser'):
-    alertasUser = environ['alertasUser'];
-
-if environ.get('alertasPassword'):
-    alertasPassword = environ['alertasPassword'];
 
 #Inicializacion de variables necesarias
 url = None;
