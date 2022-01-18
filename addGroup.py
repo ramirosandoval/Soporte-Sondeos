@@ -60,11 +60,11 @@ if args.link:
     else:
         url = args.link;
 
-if args.gruponombre:
-    nombreDeGrupo = args.gruponombre;
+if args.nombregrupo:
+    nombreDeGrupo = args.nombregrupo;
      
-if args.grupoCodigo:
-    codigoDeGrupo = args.grupoCodigo;
+if args.codigogrupo:
+    codigoDeGrupo = args.codigogrupo;
 #Argumentos
 
 #Pandas
@@ -83,13 +83,9 @@ usernameInput = browser.find_element_by_xpath("//input[@name='_username']");
 passwordInput = browser.find_element_by_xpath("//input[@name='_password']");
 
 #Credentials
-
-if argv.username and argv.password:
-    usernameInput.send_keys(argv.username);
-    passwordInput.send_keys(argv.password);
-else:
-    usernameInput.send_keys(alertasUser);
-    passwordInput.send_keys(alertasPassword);
+if args.username and args.password:
+    usernameInput.send_keys(args.username);
+    passwordInput.send_keys(args.password);
 #Credentials
 
 

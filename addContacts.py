@@ -79,9 +79,9 @@ usernameInput = browser.find_element_by_xpath("//input[@name='_username']");
 passwordInput = browser.find_element_by_xpath("//input[@name='_password']");
 
 #Consigue credenciales mediante variables de ambiente o argumentos
-if argv.username and argv.password:
-    usernameInput.send_keys(argv.username);
-    passwordInput.send_keys(argv.password);
+if args.username and args.password:
+    usernameInput.send_keys(args.username);
+    passwordInput.send_keys(args.password);
 else:
     usernameInput.send_keys(alertasUser);
     passwordInput.send_keys(alertasPassword);
