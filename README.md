@@ -36,7 +36,7 @@
   <li>-p / —password es para indicar la contraseña de la plataforma de alertas</li>
   <li>-nl / —nombrelote es para indicar el nombre del lote seguido de su extension que tiene que estar en una carpeta llamada "bases", por ahora el programa solo trabaja con archivos excel.</li>
   <li>-cn / —columnanombres es para indicar el valor que tiene la columna que posee los nombres de contacto dentro del lote y que el programa la identifique.</li>
-  <li>-l / —link es para indicar el link o nombre de la plataforma en la que ingresar los contactos. Por EJ: eswenance/argenpesos/</li>
+  <li>-l / —link es para indicar el link o nombre de la plataforma en la que ingresar los contactos. Por EJ: eswenance/argenpesos/http://uywenance.sondeosglobal.com/user/login</li>
   <li>-ng / —nombregrupo es para indicar el nombre que se desea que tenga el grupo</li>
   <li>-cg / —codigogrupo es para indicar el codigo numerico que se desea que tenga el grupo</li>
   <li>-cm / —columnamensaje es para indicar el valor que tiene la columna que posee el mensaje que se enviara a cada contacto.</li>
