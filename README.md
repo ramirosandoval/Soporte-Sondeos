@@ -43,6 +43,7 @@
 </ul>
 
 ### A tener en cuenta
+Los lotes deben estar en una carpeta llamada "bases", a su vez, esta carpeta debe ser creada dentro de la misma carpeta en donde se ubiquen los scripts.
 
 El programa, al ser ejecutado con todos sus parámetros especificados, tardara unos segundos en abrir el navegador y automáticamente ingresar los contactos o crear el grupo. Para su correcto funcionamiento es importante minimizar este navegador.
 Los programas envian informacion sobre su estado hacia la consola.
