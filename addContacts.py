@@ -21,7 +21,7 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument('-u', '--username', help='Username de la plataforma');
 parser.add_argument('-p', '--password', help='Password de la plataforma');
-parser.add_argument('-n', '--nombrelote', help='Nombre del lote');
+parser.add_argument('-nl', '--nombrelote', help='Nombre del lote');
 parser.add_argument('-cn', '--columnanombres', help='Nombre de la columna con los nombres dentro del lote');
 parser.add_argument('-ct', '--columnatelefonos', help='Nombre de la columna con los telefonos dentro del lote');
 parser.add_argument('-l', '--link', help='Link o nombre de la plataforma en la que ingresar los contactos. Por EJ: eswenance (o la URL completa)');
