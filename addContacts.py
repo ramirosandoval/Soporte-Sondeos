@@ -113,6 +113,8 @@ for nombre in columnaNombresDelLote: #Por cada nombre en el lote
     except NoSuchElementException:#Si al apretar el boton de guardar se detecta que el usuario ya existia, jamas redirige a la pagina anterior, por lo que no
     #se encuentra el boton de añadir nuevo contacto, devolviendo asi una exepcion "NoSuchElement". Si esto sucede:
         repetidosCounter+=1;#aumentar contador de contactos repetidos
+        print(f"El lote tuvo {repetidosCounter} numeros repetidos!");
+
         elementoNombreDeContacto = browser.find_element_by_xpath("//input[@name='nombre']");#Volver a encontrar el input de nombre
         elementoTelefonoContacto = browser.find_element_by_xpath("//input[@name='telefono']");#Volver a encontrar el input de telefono
 
@@ -124,5 +126,3 @@ for nombre in columnaNombresDelLote: #Por cada nombre en el lote
     elementoNombreDeContacto = browser.find_element_by_xpath("//input[@name='nombre']");#Volver a encontrar el input de nombre
     elementoTelefonoContacto = browser.find_element_by_xpath("//input[@name='telefono']");#Volver a encontrar el input de telefono
 
-
-print(f"El lote tuvo {repetidosCounter} numeros repetidos!");
