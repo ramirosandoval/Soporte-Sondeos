@@ -1,0 +1,5 @@
+#ignorando log del webdriver de firefox utilizado por selenium, ademas del archivo en el que tomo notas sobre
+# lo que el programa deberia hacer o como pienso estructurarlo, etcetera:
+
+.geckodriver.log
+.autobit - diseño_planeacion.txt
