@@ -30,7 +30,9 @@ else:
 
     if args.pagina == 'panel.capiwha.com' and capiwhaFueVisitado == False:
         capiwhaFueVisitado = True
-        setearVariableDeEntornoCapiwha()
+        print('TODO: setear Variable De EntornoCapiwha desde bash')
+    elif args.pagina == 'panel.capiwha.com' and capiwhaFueVisitado == True:
+        print('TODO: usar Credenciales Apiwha')
 
     firefoxDriver.get(f'http://{args.pagina}')
 
